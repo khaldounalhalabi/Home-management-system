@@ -56,3 +56,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
 Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumptionController@index') ->middleware('auth:api');
 
 
+
+/** Gas API */
+
+Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
