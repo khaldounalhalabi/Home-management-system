@@ -11,10 +11,6 @@
 
 
 
-
-
-
-
 commands :
  php artisan schedule:work
  aravel-echo-server start
@@ -28,6 +24,8 @@ commands :
  php artisan db:seed ConsumptionSeeder
  php artisan db:seed WaterSensorSeeder
  php artisan db:seed GasSensorSeeder
+ php artisan db:seed GasConsumptionSeeder
+ php artisan db:seed WaterConsumptionSeeder
 
 
 
@@ -37,4 +35,8 @@ https://www.itsolutionstuff.com/post/real-time-event-broadcasting-with-laravel-6
 
 configuration of redis :
 https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+
+broadcasting:
+https://pusher.com/tutorials/realtime-table-laravel/
+https://laravel.com/docs/9.x/broadcasting
 

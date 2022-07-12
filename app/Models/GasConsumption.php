@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GasConsumption extends Model
 {
     use HasFactory;
-    protected $table = "gas_consumtions";
+    protected $table = "gas_consumptions";
     protected $primaryKey = "id";
     public $timestamps = true;
     protected $fillable =
