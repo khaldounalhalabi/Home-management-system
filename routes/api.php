@@ -18,6 +18,8 @@ use GuzzleHttp\Middleware;
 |
 */
 
+/** Electricity API */
+
 Route::namespace('App\Http\Controllers')->group(function () {
 
     Route::get('/consumption/index', 'ConsumptionController@index')->middleware('auth:api');
@@ -46,3 +48,11 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::delete('/interrupter/delete/{id}', 'InterrupterController@destroy')->middleware('auth:api');
     Route::post('/interrupter/on_off/{id}', 'InterrupterController@on_of')->middleware('auth:api');
 });
+
+
+
+/** Water API */
+
+Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumptionController@index') ->middleware('auth:api');
+
+

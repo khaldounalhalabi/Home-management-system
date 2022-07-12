@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bills', function (Blueprint $table) {
+        Schema::create('water_sensors', function (Blueprint $table) {
             $table->id();
-
+            $table->float('current_consumption');
             $table->UnsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('date');
-            $table->float('value');
+
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('water_sensors');
     }
-}
+};

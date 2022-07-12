@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Bill;
+use App\Models\WaterSensor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class BillSeeder extends Seeder
+class WaterSensorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class BillSeeder extends Seeder
      */
     public function run()
     {
-        Bill::factory()->count(1000)->create() ; 
+        WaterSensor::factory()->count(50)->create();
     }
 }
