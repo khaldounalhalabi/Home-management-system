@@ -1,0 +1,24 @@
+1 - install passport
+2 - install carbon time package
+
+
+
+
+
+
+
+
+
+
+
+
+commands :
+ php artisan schedule:work
+
+ php artisan passport:install
+ php artisan passport:keys
+ php artisan db:seed UserSeeder
+ php artisan db:seed SensorSeeder
+ php artisan db:seed InterrupterSeeder
+ php artisan db:seed ConsumptionSeeder
+ php artisan db:seed BillSeeder
