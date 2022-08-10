@@ -13,7 +13,7 @@
 
 commands :
  php artisan schedule:work
- aravel-echo-server start
+ laravel-echo-server start
 
  php artisan migrate:fresh
  php artisan passport:install

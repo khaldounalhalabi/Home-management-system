@@ -1,11 +1,13 @@
 <?php
 
+use App\Events\ConsumptionEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsumptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
-
+use App\Events\MessageEvent;
+use Illuminate\Support\Facades\Broadcast;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +62,14 @@ Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumpt
 /** Gas API */
 
 Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
+
+
+
+/** Broadcasting API */
+
+Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
+
+/** Reset Password */
+
+Route::post('/forgot' , 'App\Http\Controllers\ForgotController@forgot') ;
+Route::post('/reset' , 'App\Http\Controllers\ForgotController@reset' ) ;

@@ -17,7 +17,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/t', function () {
-    event(new \App\Events\OverConsumption());
-    dd('Event Run Successfully.');
-});

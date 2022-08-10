@@ -22,13 +22,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(ConsumptionSeeder::class);
-        $this->call(GasConsumption::class);
+        $this->call(UserSeeder::class);
         $this->call(GasSensorSeeder::class);
         $this->call(InterrupterSeeder::class);
         $this->call(SensorSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(WaterConsumptionSeeder::class);
         $this->call(WaterSensorSeeder::class);
+        $this->call(ConsumptionSeeder::class);
+        $this->call(GasConsumption::class);
+        $this->call(WaterConsumptionSeeder::class);
     }
 }

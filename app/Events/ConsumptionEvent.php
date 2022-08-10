@@ -11,10 +11,11 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
 // 1
-class MessageEvent implements ShouldBroadcast
+class ConsumptionEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    private $user, $message;
+    public $afterCommit = true;
+    private $user_id, $consumption;
     // 2
     public function __construct($user_id, $consumption)
     {
@@ -32,7 +33,7 @@ class MessageEvent implements ShouldBroadcast
     // 4
     public function broadcastAs()
     {
-        return 'consumption';
+        return 'consumption.new';
     }
     // 5
     public function broadcastOn()
@@ -40,3 +41,5 @@ class MessageEvent implements ShouldBroadcast
         return new Channel('public.room');
     }
 }
+
+
