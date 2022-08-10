@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bill>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\WaterConsumption>
  */
-class BillFactory extends Factory
+class WaterConsumptionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,9 @@ class BillFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 50),
-            'date' => $this->faker->date('Y_m_1'),
-            'value' => $this->faker->numberBetween(100, 10000),
+            'consumption_per_day' =>  $this->faker->numberBetween(10, 50),
+            'date' => $this->faker->date('Y_m_d'),
+            'cost' => $this->faker->numberBetween(100, 10000),
         ];
     }
 }

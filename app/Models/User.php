@@ -54,6 +54,16 @@ class User extends Authenticatable
         return $this->hasOne(Sensor::class);
     }
 
+    public function water_sensor()
+    {
+        return $this->hasOne(WaterSensor::class);
+    }
+
+    public function gas_sensor()
+    {
+        return $this->hasOne(WaterSensor::class);
+    }
+
     public function interrupters()
     {
         return $this->hasMany(Interrupter::class);
@@ -64,8 +74,14 @@ class User extends Authenticatable
         return $this->hasMany(Consumption::class);
     }
 
-    public function bills()
+    public function water_consumptions()
     {
-        return $this->hasMany(Bill::class);
+        return $this->hasMany(WaterConsumption::class);
     }
+
+    public function gas_consumptions()
+    {
+        return $this->hasMany(WaterConsumption::class);
+    }
+
 }

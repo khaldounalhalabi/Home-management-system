@@ -1,11 +1,13 @@
 <?php
 
+use App\Events\ConsumptionEvent;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsumptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
-
+use App\Events\MessageEvent;
+use Illuminate\Support\Facades\Broadcast;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,8 @@ use GuzzleHttp\Middleware;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+/** Electricity API */
 
 Route::namespace('App\Http\Controllers')->group(function () {
 
@@ -46,3 +50,26 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::delete('/interrupter/delete/{id}', 'InterrupterController@destroy')->middleware('auth:api');
     Route::post('/interrupter/on_off/{id}', 'InterrupterController@on_of')->middleware('auth:api');
 });
+
+
+
+/** Water API */
+
+Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumptionController@index') ->middleware('auth:api');
+
+
+
+/** Gas API */
+
+Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
+
+
+
+/** Broadcasting API */
+
+Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
+
+/** Reset Password */
+
+Route::post('/forgot' , 'App\Http\Controllers\ForgotController@forgot') ;
+Route::post('/reset' , 'App\Http\Controllers\ForgotController@reset' ) ;

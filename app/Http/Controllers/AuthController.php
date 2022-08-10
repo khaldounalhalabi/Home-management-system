@@ -13,10 +13,10 @@ use Illuminate\Validation\Rules\Password;
 class AuthController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    // }
 
     public function login(Request $request)
     {
@@ -78,7 +78,7 @@ class AuthController extends Controller
                 'user' => $user,
                 'authorisation' => [
                     'token' => $token,
-                    'type' => 'bearer',
+                    'type' => 'Bearer',
                 ]
             ]);
         } catch (\Exception $e) {

@@ -1,24 +1,42 @@
 1 - install passport
 2 - install carbon time package
-
-
-
-
-
-
-
-
+3 - composer require predis/predis
+4 - npm install -g laravel-echo-server
+5 - laravel-echo-server init
+6 - npm install
+7 - npm install laravel-echo
+8 - npm install socket.io-client
+9 - npm run dev
 
 
 
 
 commands :
  php artisan schedule:work
+ laravel-echo-server start
 
+ php artisan migrate:fresh
  php artisan passport:install
  php artisan passport:keys
  php artisan db:seed UserSeeder
  php artisan db:seed SensorSeeder
  php artisan db:seed InterrupterSeeder
  php artisan db:seed ConsumptionSeeder
- php artisan db:seed BillSeeder
+ php artisan db:seed WaterSensorSeeder
+ php artisan db:seed GasSensorSeeder
+ php artisan db:seed GasConsumptionSeeder
+ php artisan db:seed WaterConsumptionSeeder
+
+
+
+
+how to do broadcasting using socket.io and redis :
+https://www.itsolutionstuff.com/post/real-time-event-broadcasting-with-laravel-6-and-socketioexample.html
+
+configuration of redis :
+https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+
+broadcasting:
+https://pusher.com/tutorials/realtime-table-laravel/
+https://laravel.com/docs/9.x/broadcasting
+
