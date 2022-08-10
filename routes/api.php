@@ -67,7 +67,7 @@ Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionCont
 
 /** Broadcasting API */
 
-Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
+// Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
 
 /** Reset Password */
 
