@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class WaterConsumption extends Model
 {
     use HasFactory;
-    protected $table = "bills";
+    protected $table = "water_consumptions";
     protected $primaryKey = "id";
     public $timestamps = true;
-    protected $fillable = [
+    protected $fillable =
+    [
         'user_id',
+        'consumption_per_day',
         'date',
-        'value',
-
+        'cost',
     ];
 
     public function user()

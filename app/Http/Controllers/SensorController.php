@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
+use App\Events\OverConsumption; // import event class at the top of the file
 
 class SensorController extends Controller
 {
@@ -93,4 +94,24 @@ class SensorController extends Controller
             return response()->json(['message' => 'there is been an error', $e->getMessage()]);
         }
     }
-}
+
+
+
+
+//     public function show()
+//     {
+//         // $user_id = auth()->user()->id;
+//         // $sensor = Sensor::where('user_id' , $user_id) ;
+//         $sensor = Sensor::all()->first() ;
+//         event(new OverConsumption($sensor)); // broadcast `ScoreUpdated` event
+
+//         return redirect()->back()->withValue($sensor->current_consumption);
+//     }
+
+
+//     public function show_sensor()
+//     {
+//         return Sensor::all();
+//     }
+
+ }
