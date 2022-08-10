@@ -18,8 +18,8 @@ class InterrupterController extends Controller
     {
         $user_id = Auth::user()->id;
         $interrupters = Interrupter::where('user_id', $user_id)->get();
-        $time = Carbon::now('+03:00')->format('H:i:s');
-        dd($time) ;
+        // $time = Carbon::now('+03:00')->format('H:i:s');
+        // dd($time) ;
         return response()->json(['message' => 'done', $interrupters]);
     }
 
