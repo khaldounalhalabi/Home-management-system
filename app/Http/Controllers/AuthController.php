@@ -109,10 +109,12 @@ class AuthController extends Controller
 
     public function user_details()
     {
-        $user['name'] = Auth::user()->name;
-        $user['email'] = Auth::user()->email;
-        $user['home_number'] = Auth::user()->home_number;
-        $user['phone_number'] = Auth::user()->phone_number;
+        // $user['name'] = Auth::user()->name;
+        // $user['email'] = Auth::user()->email;
+        // $user['home_number'] = Auth::user()->home_number;
+        // $user['phone_number'] = Auth::user()->phone_number;
+
+        $user = User::where('id' , Auth::user()->id) ;
 
         return response()->json(['user' => $user]);
     }
