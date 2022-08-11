@@ -22,10 +22,8 @@
                         <td style="height:80px;">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="text-align:center;">
-                            <a href="https://rakeshmandal.com" title="logo" target="_blank">
-                                <img width="60" src="https://i.ibb.co/hL4XZp2/android-chrome-192x192.png" title="logo" alt="logo">
-                            </a>
+                        <td style="text-align:center; font-size: 50px ; ">
+                           Home Energy Management System
                         </td>
                     </tr>
                     <tr>
@@ -60,9 +58,7 @@
                         <td style="height:20px;">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td style="text-align:center;">
-                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>www.rakeshmandal.com</strong></p>
-                        </td>
+
                     </tr>
                     <tr>
                         <td style="height:80px;">&nbsp;</td>
