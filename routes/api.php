@@ -40,6 +40,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/sensor/sensor_status', 'SensorController@sensor_status')->middleware('auth:api');
     Route::post('/sensor/set_cut_time', 'SensorController@set_cut_time')->middleware('auth:api');
     Route::post('/sensor/set_peak_time', 'SensorController@set_peak_time')->middleware('auth:api');
+    Route::get('/sensor/get_current_consumption', 'SensorController@get_current_consumption')->middleware('auth:api');
+
 
 
     //Interrupter API

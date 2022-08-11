@@ -96,6 +96,30 @@ class SensorController extends Controller
     }
 
 
+    public function get_current_consumption()
+    {
+
+        try{
+            $user_id = Auth::user()->id ;
+            $sensor = Sensor::where('user_id' , $user_id)->first() ;
+            return response()->json([
+                'message' => 'data has been retrieved successfuly' ,
+                'current consumption' => $sensor->current_consumption ,
+                'cost' => $sensor->current_consumption * 40
+            ]) ;
+        }
+
+    catch(\Exception $e){
+        return response()->json([
+            'message' => 'there is been an error' ,
+            'error' => $e->getMessage
+        ]) ;
+    }
+
+
+    }
+
+
 
 
 //     public function show()
