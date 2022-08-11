@@ -112,7 +112,7 @@ class SensorController extends Controller
     catch(\Exception $e){
         return response()->json([
             'message' => 'there is been an error' ,
-            'error' => $e->getMessage
+            'error' => $e->getMessage()
         ]) ;
     }
 
