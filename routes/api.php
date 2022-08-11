@@ -31,7 +31,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/register', 'AuthController@register');
     Route::post('/login', 'AuthController@login');
     Route::post('/logout', 'AuthController@logout');
-    Route::post('/user_details', 'AuthController@user_details');
+    Route::post('/user_details', 'AuthController@user_details')->middleware('auth:api');
 
 
     //Sensor API
