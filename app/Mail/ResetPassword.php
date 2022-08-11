@@ -18,7 +18,7 @@ class ResetPassword extends Mailable
      */
     public function __construct($name)
     {
-        $this->name = $name ; 
+        $this->name = $name ;
     }
 
     /**
@@ -28,12 +28,7 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('Home-EMS@Email.com', 'Home Management System')
-            ->greeting('Hello'.$name)
-            ->line('
-                You Want to reset your password
-                Click on the URL bellow')
-            ->action('RESET YOUR PASSWORD', 'http://127.0.0.2/api/reset')
-            ->line('Thank you for using our system !');
+        return $this->view('welcome') ;
+
     }
 }
