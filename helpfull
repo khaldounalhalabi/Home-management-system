@@ -29,6 +29,22 @@ commands :
 
 
 
+ heroku run php artisan migrate:fresh
+ heroku run php artisan passport:install
+ heroku run php artisan passport:keys
+ heroku run php artisan db:seed UserSeeder
+ heroku run php artisan db:seed SensorSeeder
+ heroku run php artisan db:seed InterrupterSeeder
+ heroku run php artisan db:seed ConsumptionSeeder
+ heroku run php artisan db:seed WaterSensorSeeder
+ heroku run php artisan db:seed GasSensorSeeder
+ heroku run php artisan db:seed GasConsumptionSeeder
+ heroku run php artisan db:seed WaterConsumptionSeeder
+
+
+
+
+
 
 how to do broadcasting using socket.io and redis :
 https://www.itsolutionstuff.com/post/real-time-event-broadcasting-with-laravel-6-and-socketioexample.html
