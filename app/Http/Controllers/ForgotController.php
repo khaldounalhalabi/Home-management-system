@@ -47,7 +47,7 @@ class ForgotController extends Controller
             //Send Email
             $user = User::where('email' , $email)->get()->first() ;
             //dd($user) ;
-            Mail::to($user->email)->send(new ResetPassword());
+            Mail::to('khaldoun@email.com')->send(new ResetPassword());
             return response()->json([
             'message' => 'Check Your Email'
         ]) ;
