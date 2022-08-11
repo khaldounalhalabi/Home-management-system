@@ -61,36 +61,6 @@ class ForgotController extends Controller
     }
 
 
-    public function reset(Request $request , $email)
-    {
-        $user = User::where('email' , $email)->get() ;
 
-        $rules = [
-            'password' => 'required|confirmed|min:6',
-        ];
-
-        $validator = Validator::make($request->only('password'), $rules);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()]);
-        }
-
-        try{
-
-            $user->password = bcrypt($request->password) ;
-            $user->save() ;
-            return response()->json([
-                'message' => 'Your password has been changed'
-            ]) ;
-        }
-        catch(\Exception  $e){
-            return response()->json([
-                'message' => 'there is been error' ,
-                'error' => $e->getMessage() ,
-            ]) ;
-        }
-
-
-    }
 
 }

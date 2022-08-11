@@ -72,4 +72,4 @@ Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionCont
 /** Reset Password */
 
 Route::post('/forgot' , 'App\Http\Controllers\ForgotController@forgot') ;
-Route::post('/reset' , 'App\Http\Controllers\ForgotController@reset' ) ;
+Route::post('/reset' , 'App\Http\Controllers\ResetPasswordController@reset' ) ;
