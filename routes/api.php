@@ -90,7 +90,7 @@ Route::get('/' , function () {
     // $time->setTimezone('UTC');
     return response()->json(
         [
-            'time' => Carbon::now('UTC +02:00')->format('h:m') ,
+            'time' => Carbon::now()->format('h:m') ,
             'fuc' => 'fuck'
         ]
     ) ;
