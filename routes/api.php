@@ -82,12 +82,12 @@ Route::get('notification/over_consumption_peak', 'App\Http\Controllers\Notificat
 
 // Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
 
-Carbon::setTestNowAndTimezone('Damascus/Syria') ;
+// Carbon::setTestNowAndTimezone('Damascus/Syria') ;
 
 Route::get('/' , function () {
     return response()->json(
         [
-            'time' => Carbon::now()->format('H:i')
+            'time' => Carbon::now("03:00")->format('H:i')
         ]
     ) ;
 }) ;
