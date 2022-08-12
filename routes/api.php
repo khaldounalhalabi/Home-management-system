@@ -87,7 +87,7 @@ Route::get('notification/over_consumption_peak', 'App\Http\Controllers\Notificat
 Route::get('/' , function () {
     return response()->json(
         [
-            'time' => Carbon::now("03:00")->format('H:i')
+            'time' => Carbon::now("03:00")
         ]
     ) ;
 }) ;
