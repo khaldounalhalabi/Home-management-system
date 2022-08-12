@@ -85,6 +85,9 @@ Route::get('notification/over_consumption_peak', 'App\Http\Controllers\Notificat
 // Carbon::setTestNowAndTimezone('Damascus/Syria') ;
 
 Route::get('/' , function () {
+
+    // $time = Carbon::now()->format('h:m');
+    // $time->setTimezone('UTC');
     return response()->json(
         [
             'time' => Carbon::now('UTC +02:00')->format('h:m') ,
