@@ -49,12 +49,12 @@ class NotificationController extends Controller
         }
     }
 
-    public function over_consumption_peak()
+    public function over_consumption_peak(Request $request)
     {
         $user_id = Auth::user()->id;
         $sensor = Sensor::where('user_id', $user_id)->first();
         try {
-            if ($sensor->current_consumption >= 150 && $sensor->start_peak_time <= Carbon::now()->format('H:i') && $sensor->end_peak_time >= Carbon::now()->format('H:i') ) {
+            if ($sensor->current_consumption >= 150 && $sensor->start_peak_time <= $request->only('time') && $sensor->end_peak_time >= $request->only('time') ) {
                 return response()->json([
                     'message' => 'over consumption in peak time',
                     'status' => 200
