@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
 use App\Events\MessageEvent;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -32,6 +33,11 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/login', 'AuthController@login');
     Route::post('/logout', 'AuthController@logout');
     Route::post('/user_details', 'AuthController@user_details')->middleware('auth:api');
+
+    /** Reset Password */
+
+    Route::post('/forgot', 'App\Http\Controllers\ForgotController@forgot');
+    Route::post('/reset', 'App\Http\Controllers\ResetPasswordController@reset');
 
 
     //Sensor API
@@ -65,13 +71,21 @@ Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumpt
 
 Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
 
+/** Notification API */
+
+Route::get('notification/over_consumption' , 'App\Http\Controllers\NotificationController@over_consumption' )->middleware('auth:api') ;
+Route::get('notification/over_consumption_cost' , 'App\Http\Controllers\NotificationController@over_consumption_cost' )->middleware('auth:api');
+Route::get('notification/over_consumption_peak', 'App\Http\Controllers\NotificationController@over_consumption_peak')->middleware('auth:api');
 
 
 /** Broadcasting API */
 
 // Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
 
-/** Reset Password */
-
-Route::post('/forgot' , 'App\Http\Controllers\ForgotController@forgot') ;
-Route::post('/reset' , 'App\Http\Controllers\ResetPasswordController@reset' ) ;
+Route::get('/' , function () {
+    return response()->json(
+        [
+            'time' => Carbon::now()->format('H:i')
+        ]
+    ) ;
+}) ;

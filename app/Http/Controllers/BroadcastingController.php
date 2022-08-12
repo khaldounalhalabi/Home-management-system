@@ -15,12 +15,7 @@ class BroadcastingController extends Controller
         $user_id = Auth::user()->id ;
         $sensor = Sensor::where('user_id' , $user_id)->get() ;
         event(new ConsumptionEvent($user_id, $sensor));
-        //ConsumptionEvent::dispatch($user_id , $sensor) ;
+        ConsumptionEvent::dispatch($user_id , $sensor) ;
         return 'ok' ;
-        // return response()->json([
-        //     'message' => 'data has been retrieved' ,
-        //     'user id' => $user_id ,
-        //     'consumption' => $consumption
-        // ]);
     }
 }
