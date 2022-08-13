@@ -22,7 +22,14 @@ class SolarController extends Controller
             }
             $average = $total/$count ;
 
-            if($average < 21.1){
+            if ($average < 2 ) {
+                return response()->json([
+                    'data' => '3-5',
+                    'status' => 200
+                ]);
+            }
+
+            if($average < 21.1 && $average > 10){
                 return response()->json([
                     'data' => '9-12' ,
                     'status' => 200
