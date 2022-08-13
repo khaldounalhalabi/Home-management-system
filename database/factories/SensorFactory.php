@@ -19,11 +19,11 @@ class SensorFactory extends Factory
             'allowed_consumption' => $this->faker->numberBetween(10, 100),
             'allowed_consumption_cost' => $this->faker->randomFloat(2, 10, 1000),
             'user_id' => $this->faker->unique()->numberBetween(1, 50),
-            'start_cut_time' => $this->faker->time('H:i'),
-            'end_cut_time' => $this->faker->time('H:i'),
+            'start_cut_time' => $this->faker->time('h:m'),
+            'end_cut_time' => $this->faker->time('h:m'),
             'current_voltage' => $this->faker->numberBetween(180, 220),
-            'start_peak_time' => $this->faker->time('H:i'),
-            'end_peak_time' => $this->faker->time('H:i'),
+            'start_peak_time' => $this->faker->time('h:m'),
+            'end_peak_time' => $this->faker->time('h:m'),
         ];
     }
 }

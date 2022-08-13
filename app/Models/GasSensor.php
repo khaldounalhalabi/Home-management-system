@@ -15,6 +15,9 @@ class GasSensor extends Model
 
         'current_consumption',
         'user_id',
+        'status' ,
+        'start_cut_time' ,
+        'end_cut_time' , 
 
     ];
 

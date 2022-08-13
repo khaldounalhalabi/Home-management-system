@@ -23,7 +23,10 @@ class ConsumptionController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return response()->json(["message" => "there is been an error", "error message" => $validator->errors()]);
+            return response()->json([
+                "message" => "there is been an error",
+                "error message" => $validator->errors()
+            ]);
         }
         $start_date = $request->start_date;
         $end_date = $request->end_date;

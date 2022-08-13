@@ -60,8 +60,8 @@ class SensorController extends Controller
     {
         try {
             $request->validate([
-                'start_time' => 'date_format:H:i:s|required',
-                'end_time' => 'date_format:H:i:s|required'
+                'start_time' => 'date_format:h:m|required',
+                'end_time' => 'date_format:h:m|required'
             ]);
 
             $user_id = Auth::user()->id;
@@ -79,8 +79,8 @@ class SensorController extends Controller
     {
         try {
             $request->validate([
-                'start_peak_time' => 'date_format:H:i:s|required',
-                'end_peak_time' => 'date_format:H:i:s|required',
+                'start_peak_time' => 'date_format:h:m|required',
+                'end_peak_time' => 'date_format:h:m|required',
             ]);
 
             $user_id = Auth::user()->id;
@@ -117,6 +117,27 @@ class SensorController extends Controller
         }
 
 
+    }
+
+    public function get()
+    {
+        try{
+
+            $user_id = Auth::user()->id;
+            $sensor = Sensor::where('user_id', $user_id)->first();
+            return response()->json([
+                'message' => 'success' ,
+                'sensor' => $sensor ,
+                'status' => 200
+            ]) ;
+        }
+        catch(\Exception $e){
+            return response()->json([
+                'message' => 'there is been an error' ,
+                'error' => $e->getMessage() ,
+                'status' => 500
+            ]) ;
+        }
     }
 
  }

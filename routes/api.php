@@ -47,7 +47,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/sensor/set_cut_time', 'SensorController@set_cut_time')->middleware('auth:api');
     Route::post('/sensor/set_peak_time', 'SensorController@set_peak_time')->middleware('auth:api');
     Route::get('/sensor/get_current_consumption', 'SensorController@get_current_consumption')->middleware('auth:api');
-
+    Route::get('/sensor/get' , 'SensorController@get')->middleware('auth:api') ;
 
 
     //Interrupter API
@@ -63,13 +63,18 @@ Route::namespace('App\Http\Controllers')->group(function () {
 
 /** Water API */
 
-Route::get('water/consumption/index' , 'App\Http\Controllers\water\WaterConsumptionController@index') ->middleware('auth:api');
-
-
+Route::get('/water/consumption/index' , 'App\Http\Controllers\water\WaterConsumptionController@index') ->middleware('auth:api');
+Route::get('/water/consumption/current_consumption' , 'App\Http\Controllers\water\CurrentConsumption@current_consumption')->middleware('auth:api') ;
+Route::post('/water/consumption/set_cut_time' , 'App\Http\Controllers\water\SetCutTimeController@set_cut_time')->middleware('auth:api') ;
+Route::get('/water/sensor' ,'App\Http\Controllers\water\GetWaterSensorController@get')->middleware('auth:api');
 
 /** Gas API */
 
-Route::get('gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
+Route::get('/gas/consumption/index', 'App\Http\Controllers\gas\GasConsumptionController@index')->middleware('auth:api');
+Route::get('/gas/sensor', 'App\Http\Controllers\gas\GetGasSensorController@get')->middleware('auth:api');
+Route::get('/gas/consumption/current_consumption', 'App\Http\Controllers\gas\CurrnetConsumptionController@current_consumption')->middleware('auth:api');
+Route::post('/gas/consumption/set_cut_time', 'App\Http\Controllers\gas\SetCutTimeController@set_cut_time')->middleware('auth:api');
+
 
 /** Notification API */
 
@@ -84,10 +89,10 @@ Route::get('notification/over_consumption_peak', 'App\Http\Controllers\Notificat
 
 // Carbon::setTestNowAndTimezone('Damascus/Syria') ;
 
-Route::get('/' , function () {
 
-    // $time = Carbon::now()->format('h:m');
-    // $time->setTimezone('UTC');
+
+
+Route::get('/' , function () {
     return response()->json(
         [
             'time' => Carbon::now()->format('h:m') ,

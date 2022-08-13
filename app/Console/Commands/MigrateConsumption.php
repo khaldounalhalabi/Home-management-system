@@ -46,5 +46,21 @@ class MigrateConsumption extends Command
         );
 
         DB::update('update sensors set current_consumption = 0 ');
+
+        DB::statement(
+            'insert into water_consumptions (user_id , consumption_per_day , cost , date)
+            select user_id , current_consumption , current_consumption*10 , CURRENT_DATE
+            from water_sensors;'
+        );
+
+        DB::update('update water_sensors set current_consumption = 0 ');
+
+        DB::statement(
+            'insert into gas_consumptions (user_id , consumption_per_day , cost , date)
+            select user_id , current_consumption , current_consumption*40 , CURRENT_DATE
+            from gas_sensors;'
+        );
+
+        DB::update('update gas_sensors set current_consumption = 0 ');
     }
 }

@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('gas_sensors', function (Blueprint $table) {
             $table->id();
             $table->float('current_consumption');
+            $table->boolean('status');
+            $table->time('start_cut_time')->nullable();
+            $table->time('end_cut_time')->nullable();
             $table->UnsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

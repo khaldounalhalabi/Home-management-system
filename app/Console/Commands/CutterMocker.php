@@ -34,5 +34,19 @@ class CutterMocker extends Command
                    where start_cut_time <= current_time()
                    and end_cut_time >= current_time()'
                    ) ;
+
+        DB::statement(
+            'update water_sensors
+                   set status = 0
+                   where start_cut_time <= current_time()
+                   and end_cut_time >= current_time()'
+        );
+
+        DB::statement(
+            'update gas_sensors
+                   set status = 0
+                   where start_cut_time <= current_time()
+                   and end_cut_time >= current_time()'
+        );
     }
 }

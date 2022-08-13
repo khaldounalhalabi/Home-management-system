@@ -43,9 +43,11 @@ class SensorMocker extends Command
         ->increment('current_consumption', 1);
 
         DB::table('water_sensors')
+        ->where('status' , 1)
         ->increment('current_consumption' , 1) ;
 
         DB::table('gas_sensors')
+        ->where('status' , 1)
         ->increment('current_consumption' , 1) ;
     }
 }
