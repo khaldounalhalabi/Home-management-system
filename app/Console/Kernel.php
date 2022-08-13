@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('SensorMocker:minute')->everyMinute();
         $schedule->command('CutterMocker:minute')->everyMinute();
         $schedule->command('MigrateConsumption:daily')->everyTwoMinutes(); //dailyAt('24:00');
-        $schedule->command('SendConsumptionReport')->everyMinute(); //->monthly();
+        $schedule->command('SendConsumptionReport')->everyMinute()->thenPing('http://127.0.0.2/api/report'); //->monthly();
     }
 
     /**

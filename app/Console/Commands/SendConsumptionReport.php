@@ -7,6 +7,7 @@ use App\Models\Consumption;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class SendConsumptionReport extends Command
@@ -33,34 +34,13 @@ class SendConsumptionReport extends Command
     public function handle()
     {
 
-        try{
-            $users = User::all() ;
-            foreach ($users as $user) {
+        $client = new Http ;
+        $res = $client->get('http://127.0.0.2/api');
 
-                $total_cost = 0;
-                $total_consumption = 0;
-
-                $consumption = Consumption::
-                select('consumption_per_day' , 'cost')
-                ->where('user_id' , $user->id)
-                ->whereBetween(
-                    'date',
-                    [Carbon::now()->subMonth()->startOfMonth(), Carbon::now()->subMonth()->endOfMonth()]
-                )
-                ->get()
-                ->toArray();
-
-                foreach ($consumption as $c) {
-                    $total_cost+=$c['cost'] ;
-                    $total_consumption += $c['consumption_per_day'] ;
-                }
-
-                Mail::to($user['email'])->send(new SendReport($total_consumption , $total_cost));
-                return 1 ;
-            }
-        }
-        catch(\Exception $e){
-            return 0 ; 
-        }
+        return $res ;
     }
+
+
+
+
 }

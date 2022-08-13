@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Middleware;
 use App\Events\MessageEvent;
+use App\Mail\SendReport;
+use App\Models\Consumption;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,18 +89,41 @@ Route::get('notification/over_consumption_peak', 'App\Http\Controllers\Notificat
 
 /** Broadcasting API */
 
-// Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast')->middleware('auth:api');
+Broadcast::channel('/consumption', 'App\Http\Controllers\BroadcastingController@consumption_broadcast') ;
 
-// Carbon::setTestNowAndTimezone('Damascus/Syria') ;
-
-
+Route::get('solar' , 'App\Http\Controllers\SolarController@solar')->middleware('auth:api') ;
 
 
-Route::get('/' , function () {
-    return response()->json(
-        [
-            'time' => Carbon::now()->format('h:m') ,
-            'fuc' => 'fuck'
-        ]
-    ) ;
+
+
+Route::get('/report' , function () {
+        try {
+            $users = User::all();
+            foreach ($users as $user) {
+
+                $total_cost = 0;
+                $total_consumption = 0;
+
+                $consumption = Consumption::select('consumption_per_day', 'cost')
+                    ->where('user_id', $user->id)
+                    ->whereBetween(
+                        'date',
+                        [Carbon::now()->subMonth()->startOfMonth(), Carbon::now()->subMonth()->endOfMonth()]
+                    )
+                    ->get()
+                    ->toArray();
+
+                foreach ($consumption as $c) {
+                    $total_cost += $c['cost'];
+                    $total_consumption += $c['consumption_per_day'];
+                }
+
+                Mail::to($user['email'])->send(new SendReport($total_consumption, $total_cost));
+                return response("1");
+            }
+        }
+        catch (\Exception $e) {
+            return response("0");
+        }
+
 }) ;
